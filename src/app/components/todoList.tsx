@@ -1,10 +1,22 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import Button from "@/app/blocks/button";
 import CheckBox from "@/app/blocks/form/checkBox";
 
+interface Todo {
+    name: string;
+    checked: boolean;
+}
 
+interface State {
+    todos: Todo[];
+}
 
-function reducer(state, action) {
+type Action =
+    | { type: 'REMOVE_TODO'; payload: Todo }
+    | { type: 'TOGGLE_TODO'; payload: Todo }
+    | { type: 'REMOVE_ALL_COMPLETED' };
+
+function reducer(state: State, action: Action): State {
     switch (action.type) {
         case 'REMOVE_TODO':
             return {
@@ -37,10 +49,22 @@ export default function TodoList() {
         ]
     });
 
+    const [hideCompleted, setHideCompleted] = useState(false);
+
+    const visibleTodos = hideCompleted
+        ? state.todos.filter(todo => !todo.checked)
+        : state.todos;
+
     return (
         <>
-            <ul className="flex flex-col space-y-2">
-                {state.todos.map(todo => (
+            <CheckBox
+                id="masque"
+                checked={hideCompleted}
+                onChecked={() => setHideCompleted(!hideCompleted)}
+                label="Masquer les tâches accomplies"
+            />
+            <ul className="flex flex-col space-y-2 mt-4">
+                {visibleTodos.map(todo => (
                     <li key={todo.name} className="flex items-center space-x-2">
                         <CheckBox
                             id={`check-${todo.name}`}
