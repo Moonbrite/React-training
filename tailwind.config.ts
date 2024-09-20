@@ -1,6 +1,12 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+const config: {
+  plugins: never[];
+  theme: {
+    extend: { colors: { darkBackground: string; background: string; foreground: string; darkForeground: string } }
+  };
+  darkMode: string;
+  content: string[]
+} = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,8 +15,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
+        background: "var(--background)", // Mode clair
         foreground: "var(--foreground)",
+        darkBackground: "var(--dark-background)", // Mode sombre
+        darkForeground: "var(--dark-foreground)",
       },
     },
   },
