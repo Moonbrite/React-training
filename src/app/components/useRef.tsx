@@ -1,7 +1,7 @@
 "use client"
 
 import Input from "@/app/blocks/form/input";
-import {useEffect, useId, useRef, useState} from "react";
+import { useId, useRef, useState} from "react";
 
 export default function UseRef() {
 

@@ -1,5 +1,6 @@
 import CheckBoxInterface from "@/app/interface/checkBoxInterface";
 import Label from "@/app/blocks/form/label";
+import {ChangeEvent} from "react";
 
 export default function CheckBox({id,onChecked,checked,label, ...props}:CheckBoxInterface) {
     return (
@@ -8,7 +9,7 @@ export default function CheckBox({id,onChecked,checked,label, ...props}:CheckBox
                 <input
                     id={id}
                     className="checkBoxBaseStyle"
-                    onChange={(e) => onChecked(e.target.checked)}
+                    onChange={(e:ChangeEvent<HTMLInputElement> ) => onChecked(e.target.checked)}
                     type="checkbox"
                     checked={checked}
                     {...props}

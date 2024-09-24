@@ -1,5 +1,5 @@
 "use client"
-import {colorButtonStyles} from "@/app/blocks/colorButtonStyles";
+
 import {useEffect, useState} from "react";
 import Button from "@/app/blocks/button";
 import {closeModalIcon} from "@/app/icons/closeModalIcon";
@@ -39,7 +39,7 @@ export default function Modal() {
                 onClickButton={toggleModal}
                 text="Toggle modal"
             />
-            <div id={idModal} tabIndex="-1" aria-hidden={!modalOpen}
+            <div id={idModal} tabIndex={-1} aria-hidden={!modalOpen}
                  className={`${
                      modalOpen ? 'flex' : 'hidden'
                  } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full`}>

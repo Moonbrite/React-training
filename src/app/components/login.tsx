@@ -39,7 +39,7 @@ export default function Login() {
         </>
     );
 
-    function securityPassword(password) {
+    function securityPassword(password:string) {
         if (password.length <= 3) {
             return "Faible Password";
         } else if (password.length < 6 && password.length > 3) {

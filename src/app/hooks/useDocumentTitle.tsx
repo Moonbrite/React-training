@@ -2,9 +2,7 @@
 
 import {useEffect} from "react";
 
-export function useDocumentTitle(nom) {
-
-    //const titleRef = useRef(document.title);
+export function useDocumentTitle(nom:string) {
 
 
     useEffect(() => {
